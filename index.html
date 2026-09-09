@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Mousumi ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #f8f5f1;
+    --paper: #fffdf9;
+    --dark: #181615;
+    --text: #292522;
+    --muted: #81766e;
+    --rose: #b86f76;
+    --rose-dark: #914f57;
+    --border: rgba(41,37,34,.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    overflow: hidden;
+}
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen {
+    position: fixed;
+    inset: 0;
+    min-height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(25px) scale(.985);
+
+    transition:
+        opacity .65s ease,
+        transform .8s cubic-bezier(.22,1,.36,1),
+        visibility .65s;
+
+    overflow-y: auto;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.content {
+    width: 100%;
+    max-width: 680px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    padding: 30px 0;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3 {
+    font-family: "Cormorant Garamond", serif;
+}
+
+h1 {
+    font-size: clamp(3.3rem, 13vw, 7rem);
+    line-height: .86;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: clamp(2.7rem, 10vw, 5.5rem);
+    line-height: .9;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+.small {
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: .72rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.rose {
+    color: var(--rose);
+}
+
+.big-heart {
+    font-size: 4rem;
+    color: var(--rose);
+    margin: 25px 0;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.primary {
+    border: none;
+    background: var(--dark);
+    color: white;
+
+    padding: 15px 30px;
+    border-radius: 100px;
+
+    font-size: .95rem;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    background: #302b28;
+}
+
+.primary:active {
+    transform: scale(.96);
+}
+
+.next {
+    margin-top: 30px;
+}
+
+.option {
+    width: 100%;
+
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.55);
+
+    color: var(--text);
+
+    padding: 18px 20px;
+    border-radius: 17px;
+
+    font-size: 1rem;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.option:hover {
+    transform: translateY(-3px);
+    border-color: rgba(184,111,118,.5);
+    background: white;
+}
+
+.option:active {
+    transform: scale(.98);
+}
+
+.option span {
+    display: block;
+    color: var(--muted);
+    font-size: .78rem;
+    margin-top: 5px;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+/* =========================
+   OPENING
+========================= */
+
+.dark {
+    background: var(--dark);
+    color: white;
+}
+
+.dark p,
+.dark .small {
+    color: #aaa19b;
+}
+
+.dark h1 {
+    color: white;
+}
+
+.open-link {
+    display: inline-block;
+
+    margin-top: 38px;
+
+    color: white;
+
+    font-size: .9rem;
+
+    border-bottom: 1px solid rgba(255,255,255,.4);
+
+    padding-bottom: 6px;
+
+    cursor: pointer;
+
+    animation: breathe 2.2s ease-in-out infinite;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart {
+    position: absolute;
+
+    color: rgba(184,111,118,.25);
+
+    font-size: 32px;
+
+    pointer-events: none;
+
+    animation: floating 7s ease-in-out infinite;
+}
+
+.heart.one {
+    top: 12%;
+    left: 9%;
+}
+
+.heart.two {
+    right: 10%;
+    bottom: 15%;
+    animation-delay: 2s;
+}
+
+.heart.three {
+    right: 17%;
+    top: 20%;
+    animation-delay: 4s;
+}
+
+/* =========================
+   MEME STYLE CARDS
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+
+    margin: 30px 0;
+}
+
+.card {
+    min-height: 150px;
+
+    border-radius: 20px;
+
+    background: var(--paper);
+
+    border: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.5rem;
+
+    transform: rotate(var(--rotation));
+
+    transition: transform .3s ease;
+}
+
+.card:hover {
+    transform: rotate(0deg) translateY(-5px);
+}
+
+/* =========================
+   CHILDHOOD
+========================= */
+
+.childhood-box {
+    margin: 30px auto;
+
+    max-width: 450px;
+
+    padding: 45px 25px;
+
+    background: var(--paper);
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.05);
+}
+
+.childhood-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+
+    animation: tinyBounce 2s ease-in-out infinite;
+}
+
+/* =========================
+   HAND
+========================= */
+
+.hand {
+    font-size: 6rem;
+
+    margin: 35px 0;
+
+    display: inline-block;
+
+    animation: handMove 2s ease-in-out infinite;
+}
+
+/* =========================
+   AGE
+========================= */
+
+.age {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 10rem;
+
+    line-height: .8;
+
+    color: var(--rose);
+
+    margin: 20px 0;
+}
+
+/* =========================
+   DATE BUTTONS
+========================= */
+
+.date-area {
+    position: relative;
+
+    height: 150px;
+
+    margin-top: 25px;
+}
+
+.yes {
+    border: none;
+
+    background: var(--rose);
+
+    color: white;
+
+    padding: 15px 32px;
+
+    border-radius: 100px;
+
+    font-size: 1rem;
+
+    transition: transform .25s ease;
+}
+
+.yes:hover {
+    transform: scale(1.05);
+}
+
+.no {
+    position: absolute;
+
+    left: 50%;
+    top: 70px;
+
+    transform: translateX(-50%);
+
+    border: none;
+
+    background: #ded9d4;
+
+    color: #69615b;
+
+    padding: 12px 25px;
+
+    border-radius: 100px;
+
+    transition:
+        left .2s ease,
+        top .2s ease,
+        transform .2s ease;
+}
+
+.message {
+    margin-top: 15px;
+
+    min-height: 28px;
+
+    color: var(--rose);
+
+    font-size: .9rem;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-container {
+    text-align: left;
+
+    background: var(--paper);
+
+    border-radius: 25px;
+
+    padding: 35px 25px;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,.06);
+}
+
+.letter-container p {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.28rem;
+
+    line-height: 1.65;
+
+    color: var(--text);
+
+    margin-bottom: 24px;
+}
+
+.letter-break {
+    text-align: center;
+
+    font-size: 1.8rem;
+
+    color: var(--rose);
+
+    margin: 35px 0;
+}
+
+.letter-end {
+    text-align: center;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 3.5rem;
+
+    color: var(--rose);
+
+    margin-top: 35px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    background: var(--dark);
+    color: white;
+}
+
+.final h1 {
+    color: white;
+}
+
+.final p {
+    color: #aaa19b;
+}
+
+.final-heart {
+    font-size: 5rem;
+
+    margin: 25px 0;
+
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes breathe {
+
+    0%,100% {
+        opacity: .55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes floating {
+
+    0%,100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(8deg);
+    }
+}
+
+@keyframes handMove {
+
+    0%,100% {
+        transform: rotate(-8deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(8deg) translateY(-8px);
+    }
+}
+
+@keyframes tinyBounce {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.1);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px) {
+
+    .screen {
+        padding: 22px 18px;
+    }
+
+    .content {
+        padding: 25px 0;
+    }
+
+    .cards {
+        gap: 9px;
+    }
+
+    .card {
+        min-height: 135px;
+        font-size: 1.3rem;
+    }
+
+    .letter-container {
+        padding: 28px 20px;
+    }
+
+    .letter-container p {
+        font-size: 1.18rem;
+    }
+
+    .age {
+        font-size: 8rem;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================================
+     1. OPENING
+========================================= -->
+
+<section class="screen active dark" id="screen1">
+
+    <div class="content">
+
+        <div class="small">
+            A tiny surprise
+        </div>
+
+        <h1>
+            Click here.
+        </h1>
+
+        <p>
+            From someone special.
+        </p>
+
+        <div class="open-link" onclick="next(2)">
+            open the surprise →
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     2. BIRTHDAY
+========================================= -->
+
+<section class="screen" id="screen2">
+
+    <div class="content">
+
+        <div class="small">
+            September 10
+        </div>
+
+        <h1>
+            Happy Birthday,
+            <span class="rose">Mousumi</span> ❤️
+        </h1>
+
+        <p>
+            I made this little thing for you.
+        </p>
+
+        <button class="primary next" onclick="next(3)">
+            Continue
+        </button>
+
+    </div>
+
+    <div class="heart one">♡</div>
+    <div class="heart two">♡</div>
+
+</section>
+
+
+<!-- =========================================
+     3. FUNNY SECTION
+========================================= -->
+
+<section class="screen" id="screen3">
+
+    <div class="content">
+
+        <div class="small">
+            Exhibit A
+        </div>
+
+        <h2>
+            Some important evidence.
+        </h2>
+
+        <p>
+            Before we get sentimental,
+            let's establish one thing.
+        </p>
+
+        <div class="cards">
+
+            <div class="card" style="--rotation:-2deg">
+                “Who allowed this?”
+            </div>
+
+            <div class="card" style="--rotation:2deg">
+                “Still processing...”
+            </div>
+
+            <div class="card" style="--rotation:1deg">
+                “No explanation.”
+            </div>
+
+            <div class="card" style="--rotation:-2deg">
+                “Classic Mousumi.”
+            </div>
+
+        </div>
+
+        <button class="primary" onclick="next(4)">
+            Continue
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     4. CHILDHOOD
+========================================= -->
+
+<section class="screen" id="screen4">
+
+    <div class="content">
+
+        <div class="small">
+            The beginning
+        </div>
+
+        <h2>
+            You were this small...
+        </h2>
+
+        <div class="childhood-box">
+
+            <div class="childhood-icon">
+                👶
+            </div>
+
+            <p>
+                ...and still cute when you were born
+                on 9 September 2001.
+            </p>
+
+        </div>
+
+        <button class="primary" onclick="next(5)">
+            Wait...
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     5. BIRTHDAY JOKE
+========================================= -->
+
+<section class="screen" id="screen5">
+
+    <div class="content">
+
+        <div class="small">
+            Correction
+        </div>
+
+        <h2>
+            Sorry 😂
+        </h2>
+
+        <p style="font-size:1.3rem;color:var(--text);">
+            I know it's actually
+        </p>
+
+        <h3 style="margin-top:12px;">
+            10th September 2001.
+        </h3>
+
+        <p style="margin-top:15px;">
+            Just kidding.
+        </p>
+
+        <button class="primary next" onclick="next(6)">
+            Okay, continue
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     6. HOLD MY HAND
+========================================= -->
+
+<section class="screen" id="screen6">
+
+    <div class="content">
+
+        <div class="small">
+            Now
+        </div>
+
+        <h2>
+            Let's go ahead...
+        </h2>
+
+        <div class="hand">
+            🤝
+        </div>
+
+        <h3>
+            Hold my hand?
+        </h3>
+
+        <p>
+            Let's go together.
+        </p>
+
+        <button class="primary next" onclick="next(7)">
+            Hold it ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     7. AGE
+========================================= -->
+
+<section class="screen" id="screen7">
+
+    <div class="content">
+
+        <div class="small">
+            Look at you now
+        </div>
+
+        <div class="age">
+            25
+        </div>
+
+        <h2>
+            Twenty-five.
+        </h2>
+
+        <p>
+            Somehow you got here.
+        </p>
+
+        <button class="primary next" onclick="next(8)">
+            Continue
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     8. GROWING UP
+========================================= -->
+
+<section class="screen" id="screen8">
+
+    <div class="content">
+
+        <div class="small">
+            Time
+        </div>
+
+        <h2>
+            You changed.<br>
+            I changed.
+        </h2>
+
+        <p style="font-size:1.15rem;">
+            And somehow, here we are.
+        </p>
+
+        <div class="big-heart">
+            ♡
+        </div>
+
+        <p>
+            Almost three years on paper.
+            And hopefully many more ahead.
+        </p>
+
+        <button class="primary next" onclick="next(9)">
+            Continue
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     9. DATE QUESTION
+========================================= -->
+
+<section class="screen" id="screen9">
+
+    <div class="content">
+
+        <div class="small">
+            Important question
+        </div>
+
+        <h2>
+            Do you want to go
+            for a date with me?
+        </h2>
+
+        <div class="date-area">
+
+            <button class="yes" onclick="next(10)">
+                YES ❤️
+            </button>
+
+            <button class="no" id="noButton">
+                NO
+            </button>
+
+        </div>
+
+        <div class="message" id="noMessage"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     10. DATE TYPE
+========================================= -->
+
+<section class="screen" id="screen10">
+
+    <div class="content">
+
+        <div class="small">
+            Date planning
+        </div>
+
+        <h2>
+            What kind of date?
+        </h2>
+
+        <div class="options">
+
+            <button class="option" onclick="next(11)">
+                🎬 Movie date
+                <span>Lights off. Snacks on.</span>
+            </button>
+
+            <button class="option" onclick="next(11)">
+                📚 College Street
+                <span>Books, walking and probably arguing.</span>
+            </button>
+
+            <button class="option" onclick="next(11)">
+                🚶 Just roaming around
+                <span>No plan. Just us.</span>
+            </button>
+
+            <button class="option" onclick="next(11)">
+                📍 Specific place
+                <span>Okay, you choose.</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     11. OUTFIT
+========================================= -->
+
+<section class="screen" id="screen11">
+
+    <div class="content">
+
+        <div class="small">
+            Very serious question
+        </div>
+
+        <h2>
+            What are you wearing?
+        </h2>
+
+        <div class="options">
+
+            <button class="option" onclick="next(12)">
+                🌸 Ethnic
+            </button>
+
+            <button class="option" onclick="next(12)">
+                🖤 Modern
+            </button>
+
+            <button class="option" onclick="next(12)">
+                🏺 Ancient
+            </button>
+
+            <button class="option" onclick="next(12)">
+                😭 Nothing
+                <span>Okay okay, calm down.</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     12. FOOD
+========================================= -->
+
+<section class="screen" id="screen12">
+
+    <div class="content">
+
+        <div class="small">
+            Another serious question
+        </div>
+
+        <h2>
+            What are we eating?
+        </h2>
+
+        <div class="options">
+
+            <button class="option" onclick="food('biryani')">
+                🍗 Biryani
+            </button>
+
+            <button class="option" onclick="food('bengali')">
+                🍛 Bengali bhuri bhoj
+            </button>
+
+            <button class="option" onclick="food('western')">
+                🍝 Western
+            </button>
+
+            <button class="option" onclick="food('special')">
+                ✨ Something special
+            </button>
+
+        </div>
+
+        <div class="message" id="foodMessage"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     13. DAY
+========================================= -->
+
+<section class="screen" id="screen13">
+
+    <div class="content">
+
+        <div class="small">
+            When?
+        </div>
+
+        <h2>
+            Pick a day.
+        </h2>
+
+        <div class="options">
+
+            <button class="option" onclick="day('Thursday')">
+                Thursday
+            </button>
+
+            <button class="option" onclick="day('Friday')">
+                Friday
+            </button>
+
+            <button class="option" onclick="day('Saturday')">
+                Saturday
+            </button>
+
+            <button class="option" onclick="day('Sunday')">
+                Sunday
+            </button>
+
+        </div>
+
+        <div class="message" id="dayMessage"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     14. SATURDAY
+========================================= -->
+
+<section class="screen" id="screen14">
+
+    <div class="content">
+
+        <div class="small">
+            Decision made
+        </div>
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Saturday it is.
+        </h2>
+
+        <p>
+            That's the day.
+        </p>
+
+        <button class="primary next" onclick="next(15)">
+            Continue
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     15. GIFTS
+========================================= -->
+
+<section class="screen" id="screen15">
+
+    <div class="content">
+
+        <div class="small">
+            One more thing
+        </div>
+
+        <h2>
+            There are more gifts
+            to come tomorrow.
+        </h2>
+
+        <div class="big-heart">
+            🎁
+        </div>
+
+        <p>
+            Wait for it...
+        </p>
+
+        <button class="primary next" onclick="next(16)">
+            One last thing
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     16. LETTER
+========================================= -->
+
+<section class="screen" id="screen16">
+
+    <div class="content">
+
+        <div class="small">
+            I wanted to tell you this
+        </div>
+
+        <h2>
+            A letter for you.
+        </h2>
+
+        <div class="letter-container">
+
+            <p>
+                I have never liked generalizations. I hate the way people put me into cages, as if I am supposed to be one particular person—whether it is about my writing, my thinking, my work, my ideas, or even my likes and dislikes.
+            </p>
+
+            <p>
+                I think people lie when they say that there is a “real version” of you somewhere inside, and that you should hold on to that version. We are social beings, and I think we naturally have different faces, different masks, different versions of ourselves. We carry them, switch between them, and sometimes even contradict ourselves. And maybe that is simply part of being human.
+            </p>
+
+            <p>
+                The idea of having one fixed identity has always felt strange to me. It almost haunts me because it doesn't feel true. We play different roles throughout our lives, and as we do, our personalities, lifestyles, choices, beliefs, and ideas keep changing. We contradict ourselves. We become hypocrites sometimes. And perhaps that too is a part of the human experience.
+            </p>
+
+            <p>
+                I behave differently with different people in my life—with my mother, my father, my sister, my friends, and with you.
+            </p>
+
+            <p>
+                Sometimes I can be fake. Sometimes I can be a little rude. And most of the time, I am probably that grumpy guy who likes to criticize everything.
+            </p>
+
+            <p>
+                But I really like the version of myself that exists when I am with you.
+            </p>
+
+            <div class="letter-break">♡</div>
+
+            <p>
+                I don't know how to categorize it, and maybe I don't even want to. I just know that this version of me feels free. At least, I don't feel like I am pretending. It is one of the versions of myself that feels the most real.
+            </p>
+
+            <p>
+                I don't like gossiping. I don't like going shopping. I don't like crowded places. But with you, I can say all of that freely. I can complain about it, frown about it, be annoyed about it, and never feel like I have to explain myself.
+            </p>
+
+            <p>
+                I really don't know how these days have passed so quickly. It feels like we have spent so little time together, and then I look at the calendar and realize that, on paper, it has been almost three years.
+            </p>
+
+            <p>
+                And three years isn't really a small amount of time, especially when you are talking about a couple.
+            </p>
+
+            <p>
+                I hope someday I can say the same thing when that number becomes 33, or 43, or even 53.
+            </p>
+
+            <div class="letter-break">♡</div>
+
+            <p>
+                Maybe that is the whole point of what I am trying to say—the phenomenon of changing, of never remaining constant.
+            </p>
+
+            <p>
+                And it applies to you too.
+            </p>
+
+            <p>
+                No, I am not talking about you becoming a completely different person. I am talking about the variables within you changing. What I felt for you a few years ago feels different from what I feel for you now. You have changed. I have changed. And so have my feelings for you.
+            </p>
+
+            <p>
+                Sometimes it is difficult to keep up with all these changes. Sometimes it is hard to understand them or cope with them. But I am trying. And I hope I keep trying for the rest of my life.
+            </p>
+
+            <p>
+                I know I am not perfect. I know my behavior isn't perfect either. But I am trying to become better.
+            </p>
+
+            <p>
+                I can't always give you the time I wish I could. Right now, there is work, there are responsibilities, and there are things in life that demand my attention. But even when I cannot give you my time, I want you to know that I am always there for you.
+            </p>
+
+            <p>
+                I will always be standing beside you, trying to make you feel better and happier.
+            </p>
+
+            <p>
+                And I know I won't be able to keep you happy all the time.
+            </p>
+
+            <div class="letter-break">♡</div>
+
+            <p>
+                There might be days when I make you cry. There might be days when I make you sad or angry. And there might even be times when I become the reason behind the emotions that make you feel worse.
+            </p>
+
+            <p>
+                But even then, I want to be there.
+            </p>
+
+            <p>
+                If I am the reason for your pain, I want to be the person who stays beside you through it. I want to be the person who helps you through it. I want to be the solution to the problems I may have caused.
+            </p>
+
+            <p>
+                Because loving you, for me, isn't about making sure you never feel anything negative. It is about being there through all of it.
+            </p>
+
+            <p>
+                Even before we were in a relationship—when we barely knew each other and had only become good friends—the first thing I would do whenever I entered a room was look for you.
+            </p>
+
+            <p>
+                And when I found you, I felt happy.
+            </p>
+
+            <p>
+                Although “happy” doesn't really describe what I felt. It was something stranger than that. Something peculiar. Something that I couldn't quite put into words.
+            </p>
+
+            <div class="letter-break">♡</div>
+
+            <p>
+                I hate crowds. I hate shopping. And yet, I still go with you.
+            </p>
+
+            <p>
+                Because you are there.
+            </p>
+
+            <p>
+                And somehow, everything with you becomes different.
+            </p>
+
+            <p>
+                Everything with you has always been the first thing I want and, somehow, the last thing I want too.
+            </p>
+
+            <p>
+                And someday, when I am no longer here, I want to believe that I will still somehow be around you.
+            </p>
+
+            <p>
+                If you see a butterfly flying around you and eventually sitting on you, maybe that's me.
+            </p>
+
+            <p>
+                If the wind starts blowing when you are feeling too hot, maybe that's me.
+            </p>
+
+            <p>
+                If a raindrop falls gently on your face, maybe that's me too.
+            </p>
+
+            <p>
+                I want to believe that even after I am gone, some little part of me will still find its way back to you—through every organic and inorganic thing around you.
+            </p>
+
+            <p>
+                Because if there is one thing I am certain of, it is this:
+            </p>
+
+            <div class="letter-end">
+                I love you.
+            </div>
+
+        </div>
+
+        <button class="primary next" onclick="next(17)">
+            ❤️
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     17. FINAL
+========================================= -->
+
+<section class="screen final" id="screen17">
+
+    <div class="content">
+
+        <div class="small">
+            And finally...
+        </div>
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Happy Birthday,
+            Mousumi.
+        </h1>
+
+        <p style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:1.6rem;
+            margin-top:25px;
+        ">
+            See you Saturday.
+        </p>
+
+        <p style="margin-top:35px;">
+            — Your Name
+        </p>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   SCREEN NAVIGATION
+========================= */
+
+function next(number) {
+
+    const current = document.querySelector(".screen.active");
+    const target = document.getElementById("screen" + number);
+
+    if (!target) return;
+
+    if (current) {
+        current.classList.remove("active");
+    }
+
+    setTimeout(() => {
+        target.classList.add("active");
+    }, 80);
+
+}
+
+
+/* =========================
+   FOOD
+========================= */
+
+function food(choice) {
+
+    const message = document.getElementById("foodMessage");
+
+    if (choice === "biryani") {
+
+        message.innerHTML =
+        "Yeah I know you love biryani... but try something new. 😌";
+
+    }
+
+    else if (choice === "bengali") {
+
+        message.innerHTML =
+        "BORINGGGGGG 😭";
+
+    }
+
+    else if (choice === "western") {
+
+        message.innerHTML =
+        "ANTI-NATIONALIST 😭";
+
+    }
+
+    else if (choice === "special") {
+
+        message.innerHTML =
+        "GOOD CHOICE. ✨";
+
+        setTimeout(() => {
+            next(13);
+        }, 1100);
+
+    }
+
+}
+
+
+/* =========================
+   DATE DAY
+========================= */
+
+function day(choice) {
+
+    const message = document.getElementById("dayMessage");
+
+    if (choice === "Thursday") {
+
+        message.innerHTML =
+        "Can't, I have office. Sorry 😭";
+
+    }
+
+    else if (choice === "Friday") {
+
+        message.innerHTML =
+        "Again it's an office day 😭";
+
+    }
+
+    else if (choice === "Sunday") {
+
+        message.innerHTML =
+        "I am a lyadhkhor, you know na? 😴";
+
+    }
+
+    else if (choice === "Saturday") {
+
+        message.innerHTML =
+        "That's the day. ❤️";
+
+        setTimeout(() => {
+            next(14);
+        }, 1000);
+
+    }
+
+}
+
+
+/* =========================
+   RUNAWAY NO BUTTON
+========================= */
+
+const noButton = document.getElementById("noButton");
+const noMessage = document.getElementById("noMessage");
+
+let attempts = 0;
+
+const messages = [
+    "Nice try.",
+    "Nope.",
+    "That button doesn't work.",
+    "Why are you doing this? 😭",
+    "Stop trying.",
+    "Seriously?",
+    "Okay. YES is the only option now. ❤️"
+];
+
+function escapeNo() {
+
+    attempts++;
+
+    if (attempts >= 7) {
+
+        noButton.innerHTML = "YES ❤️";
+
+        noButton.style.background = "#b86f76";
+        noButton.style.color = "white";
+
+        noButton.style.left = "50%";
+        noButton.style.top = "70px";
+
+        noButton.onclick = function() {
+            next(10);
+        };
+
+        noMessage.innerHTML = messages[6];
+
+        return;
+    }
+
+    const areaWidth = window.innerWidth < 500 ? 130 : 220;
+
+    const x =
+        (Math.random() * areaWidth * 2) - areaWidth;
+
+    const y =
+        (Math.random() * 80) - 40;
+
+    noButton.style.left = `calc(50% + ${x}px)`;
+    noButton.style.top = `${70 + y}px`;
+
+    noMessage.innerHTML =
+        messages[Math.min(attempts - 1, 5)];
+}
+
+
+/* Desktop */
+
+noButton.addEventListener(
+    "mouseenter",
+    escapeNo
+);
+
+
+/* Mobile */
+
+noButton.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        escapeNo();
+
+    },
+    { passive:false }
+);
+
+</script>
+
+</body>
+</html>
